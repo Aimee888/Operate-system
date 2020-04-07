@@ -14,6 +14,12 @@ class QmyDialog(QDialog):
 
         # ///////////// 自行添加的部分 /////////////
 
+        """
+        这部分如果是按照槽函数命名规则命名的，可以注释掉，如果是自己命名的，那么需要加上。
+        命名规则：on_<object name>_<signal name>(<signal parameters>)
+        如清空按钮就是：on_btnClear_clicked
+        """
+        # ==================================================================
         # # 添加下划线
         # self.ui.chkBoxUnder.clicked.connect(self.on_chkBoxUnder_clicked)
         #
@@ -28,6 +34,7 @@ class QmyDialog(QDialog):
         #
         # # 添加clear效果
         # self.ui.btnClear.clicked.connect(self.on_btnClear_clicked)
+        # ==================================================================
 
         # 设置颜色关联函数
         self.ui.radioBlack.clicked.connect(self.do_setTextColor)
@@ -53,6 +60,14 @@ class QmyDialog(QDialog):
         font = self.ui.plainTextEdit.font()
         font.setUnderline(checked)
         self.ui.plainTextEdit.setFont(font)
+
+    # @pyqtSlot(bool)
+    # # 将编辑框里面的文字变为斜体
+    # def on_chkBoxItalic_clicked(self, checked):
+    #     # checked = self.ui.chkBoxItalic.isChecked()
+    #     font = self.ui.plainTextEdit.font()
+    #     font.setItalic(checked)
+    #     self.ui.plainTextEdit.setFont(font)
 
     # 将编辑框里面的文字变为斜体
     def on_chkBoxItalic_clicked(self):
