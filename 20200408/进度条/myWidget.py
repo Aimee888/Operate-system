@@ -23,6 +23,10 @@ class QmyWidget(QWidget):
         self.ui.horizontalSlider.setMaximum(200)
         self.ui.horizontalScrollBar.setMaximum(200)
         self.ui.progressBar.setMaximum(200)
+        # self.ui.progressBar.setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 0, 0)}")
+        self.ui.progressBar.setStyleSheet("QProgressBar::chunk { background-color: rgb(255, 0, 0)}"
+                                          "QProgressBar{text-align: center}")
+        # self.ui.progressBar.setStyleSheet("QProgressBar{text-align: center;}")
         self.ui.horizontalSlider.valueChanged.connect(self.do_valueChanged)
         self.ui.horizontalScrollBar.valueChanged.connect(self.do_valueChanged)
 
@@ -37,7 +41,7 @@ class QmyWidget(QWidget):
         self.ui.progressBar.setTextVisible(checked)
 
     @pyqtSlot(bool)  # # "InvertedAppearance" 复选框
-    def on_checkBox_2_clicked(self,checked):
+    def on_checkBox_2_clicked(self, checked):
         self.ui.progressBar.setInvertedAppearance(checked)
 
     # # ========= 自定义槽函数 ==================

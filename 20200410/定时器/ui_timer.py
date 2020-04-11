@@ -1,0 +1,96 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'ui_timer.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.0
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(343, 229)
+        self.groupBox = QtWidgets.QGroupBox(Form)
+        self.groupBox.setGeometry(QtCore.QRect(20, 10, 301, 91))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox.setFont(font)
+        self.groupBox.setObjectName("groupBox")
+        self.btnStart = QtWidgets.QPushButton(self.groupBox)
+        self.btnStart.setGeometry(QtCore.QRect(20, 20, 121, 23))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.btnStart.setFont(font)
+        self.btnStart.setObjectName("btnStart")
+        self.btnStop = QtWidgets.QPushButton(self.groupBox)
+        self.btnStop.setGeometry(QtCore.QRect(160, 20, 121, 23))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.btnStop.setFont(font)
+        self.btnStop.setObjectName("btnStop")
+        self.btnSetIntv = QtWidgets.QPushButton(self.groupBox)
+        self.btnSetIntv.setGeometry(QtCore.QRect(20, 60, 121, 23))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.btnSetIntv.setFont(font)
+        self.btnSetIntv.setObjectName("btnSetIntv")
+        self.spinBoxIntv = QtWidgets.QSpinBox(self.groupBox)
+        self.spinBoxIntv.setGeometry(QtCore.QRect(160, 60, 121, 22))
+        font = QtGui.QFont()
+        font.setFamily("MS Shell Dlg 2")
+        font.setBold(False)
+        font.setWeight(50)
+        self.spinBoxIntv.setFont(font)
+        self.spinBoxIntv.setMaximum(2000)
+        self.spinBoxIntv.setSingleStep(1)
+        self.spinBoxIntv.setStepType(QtWidgets.QAbstractSpinBox.DefaultStepType)
+        self.spinBoxIntv.setProperty("value", 1000)
+        self.spinBoxIntv.setDisplayIntegerBase(10)
+        self.spinBoxIntv.setObjectName("spinBoxIntv")
+        self.groupBox_2 = QtWidgets.QGroupBox(Form)
+        self.groupBox_2.setGeometry(QtCore.QRect(20, 110, 301, 81))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.groupBox_2.setFont(font)
+        self.groupBox_2.setObjectName("groupBox_2")
+        self.LCDHour = QtWidgets.QLCDNumber(self.groupBox_2)
+        self.LCDHour.setGeometry(QtCore.QRect(20, 20, 81, 51))
+        self.LCDHour.setDigitCount(2)
+        self.LCDHour.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.LCDHour.setObjectName("LCDHour")
+        self.LCDMin = QtWidgets.QLCDNumber(self.groupBox_2)
+        self.LCDMin.setGeometry(QtCore.QRect(110, 20, 81, 51))
+        self.LCDMin.setDigitCount(2)
+        self.LCDMin.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.LCDMin.setObjectName("LCDMin")
+        self.LCDSec = QtWidgets.QLCDNumber(self.groupBox_2)
+        self.LCDSec.setGeometry(QtCore.QRect(200, 20, 81, 51))
+        self.LCDSec.setDigitCount(2)
+        self.LCDSec.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.LCDSec.setObjectName("LCDSec")
+        self.LabElapsedTime = QtWidgets.QLabel(Form)
+        self.LabElapsedTime.setGeometry(QtCore.QRect(10, 200, 371, 16))
+        self.LabElapsedTime.setObjectName("LabElapsedTime")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "定时器"))
+        self.groupBox.setTitle(_translate("Form", "定时器"))
+        self.btnStart.setText(_translate("Form", "开始"))
+        self.btnStop.setText(_translate("Form", "停止"))
+        self.btnSetIntv.setText(_translate("Form", "设置周期"))
+        self.spinBoxIntv.setSuffix(_translate("Form", "  ms"))
+        self.groupBox_2.setTitle(_translate("Form", "当前时间（小时：分：秒）"))
+        self.LabElapsedTime.setText(_translate("Form", "     "))
