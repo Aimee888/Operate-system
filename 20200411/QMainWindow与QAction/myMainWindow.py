@@ -22,6 +22,34 @@ class QmyMainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # 设置斜体
+        self.ui.actFont_Italic.triggered.connect(self.do_act_font_italic_triggered)
+        # 设置粗体
+        self.ui.actFont_Bold.triggered.connect(self.do_act_font_bold_triggered)
+        # 设置下划线
+        self.ui.actFont_Underline.triggered.connect(self.do_act_underline_triggered)
+
+    @pyqtSlot(bool)
+    def do_act_font_italic_triggered(self, checked):  # 斜体
+        fmt = self.ui.plainTextEdit.currentCharFormat()
+        fmt.setFontItalic(checked)
+        self.ui.plainTextEdit.mergeCurrentCharFormat(fmt)
+
+    @pyqtSlot(bool)
+    def do_act_font_bold_triggered(self, checked):  # 粗体
+        fmt = self.ui.plainTextEdit.currentCharFormat()
+        if checked:
+            fmt.setFontWeight(QFont.Bold)
+        else:
+            fmt.setFontWeight(QFont.Normal)
+        self.ui.plainTextEdit.mergeCurrentCharFormat(fmt)
+
+    @pyqtSlot(bool)
+    def do_act_underline_triggered(self, checked):  # 下划线
+        fmt = self.ui.plainTextEdit.currentCharFormat()
+        fmt.setFontUnderline(checked)
+        self.ui.plainTextEdit.mergeCurrentCharFormat(fmt)
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)  # 创建app，用QApplication类
