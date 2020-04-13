@@ -43,16 +43,34 @@
     <property name="title">
      <string>文件(F)</string>
     </property>
+    <addaction name="actFile_New"/>
+    <addaction name="actFile_Open"/>
+    <addaction name="actFile_Save"/>
+    <addaction name="separator"/>
+    <addaction name="actClose"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>编辑(E)</string>
     </property>
+    <addaction name="actEdit_Cut"/>
+    <addaction name="actEdit_Copy"/>
+    <addaction name="actEdit_Paste"/>
+    <addaction name="separator"/>
+    <addaction name="actEdit_Undo"/>
+    <addaction name="acEdit_Redo"/>
+    <addaction name="separator"/>
+    <addaction name="actEdit_SelectAll"/>
+    <addaction name="actEdit_Clear"/>
    </widget>
    <widget class="QMenu" name="menu_3">
     <property name="title">
      <string>格式(M)</string>
     </property>
+    <addaction name="actFont_Italic"/>
+    <addaction name="actFont_Bold"/>
+    <addaction name="actFont_Underline"/>
+    <addaction name="separator"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -71,13 +89,23 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actFile_New"/>
+   <addaction name="actFile_Open"/>
+   <addaction name="actFile_Save"/>
+   <addaction name="separator"/>
+   <addaction name="actEdit_Cut"/>
+   <addaction name="actEdit_Copy"/>
+   <addaction name="actEdit_Paste"/>
+   <addaction name="separator"/>
    <addaction name="actFont_Italic"/>
-   <addaction name="separator"/>
    <addaction name="actFont_Bold"/>
-   <addaction name="separator"/>
    <addaction name="actFont_Underline"/>
    <addaction name="separator"/>
+   <addaction name="actEdit_Undo"/>
+   <addaction name="acEdit_Redo"/>
+   <addaction name="separator"/>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actFont_Italic">
    <property name="checkable">
     <bool>true</bool>
@@ -123,7 +151,291 @@
     <string>下划线</string>
    </property>
   </action>
+  <action name="actEdit_Cut">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/cut.jpg</normaloff>icons/images/cut.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>剪切</string>
+   </property>
+   <property name="toolTip">
+    <string>剪切到粘贴板</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actEdit_Copy">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/copy.jpg</normaloff>icons/images/copy.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>复制</string>
+   </property>
+   <property name="toolTip">
+    <string>复制到粘贴板</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="actEdit_Paste">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/paste.jpg</normaloff>icons/images/paste.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>粘贴</string>
+   </property>
+   <property name="toolTip">
+    <string>从粘贴板粘贴</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="actFile_New">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/new.jpg</normaloff>icons/images/new.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>新建</string>
+   </property>
+   <property name="toolTip">
+    <string>新建文件</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actFile_Open">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/open.jpg</normaloff>icons/images/open.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>打开...</string>
+   </property>
+   <property name="toolTip">
+    <string>打开文件</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actFile_Save">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/save.jpg</normaloff>icons/images/save.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="toolTip">
+    <string>保存修改</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actClose">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/close.jpg</normaloff>icons/images/close.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>关闭</string>
+   </property>
+   <property name="toolTip">
+    <string>关闭本窗口</string>
+   </property>
+  </action>
+  <action name="actEdit_Undo">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/undo.jpg</normaloff>icons/images/undo.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>撤销</string>
+   </property>
+   <property name="toolTip">
+    <string>撤销上次编辑操作</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="acEdit_Redo">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/redo.jpg</normaloff>icons/images/redo.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>重做</string>
+   </property>
+   <property name="toolTip">
+    <string>重做上次操作</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actEdit_Clear">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/clear.jpg</normaloff>icons/images/clear.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>清空</string>
+   </property>
+   <property name="toolTip">
+    <string>清空</string>
+   </property>
+  </action>
+  <action name="actEdit_SelectAll">
+   <property name="text">
+    <string>全选</string>
+   </property>
+   <property name="toolTip">
+    <string>全选</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actEdit_Cut</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>cut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actEdit_Copy</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>copy()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actEdit_Paste</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>paste()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actClose</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>183</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actEdit_Undo</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>undo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>acEdit_Redo</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>redo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actEdit_Clear</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actEdit_SelectAll</sender>
+   <signal>triggered()</signal>
+   <receiver>plainTextEdit</receiver>
+   <slot>selectAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>265</x>
+     <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
