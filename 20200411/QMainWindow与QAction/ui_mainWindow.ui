@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>532</width>
+    <width>691</width>
     <height>367</height>
    </rect>
   </property>
@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>531</width>
+      <width>691</width>
       <height>291</height>
      </rect>
     </property>
@@ -35,7 +35,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>532</width>
+     <width>691</width>
      <height>21</height>
     </rect>
    </property>
@@ -97,12 +97,15 @@
    <addaction name="actEdit_Copy"/>
    <addaction name="actEdit_Paste"/>
    <addaction name="separator"/>
+   <addaction name="actEdit_Undo"/>
+   <addaction name="acEdit_Redo"/>
+   <addaction name="separator"/>
    <addaction name="actFont_Italic"/>
    <addaction name="actFont_Bold"/>
    <addaction name="actFont_Underline"/>
    <addaction name="separator"/>
-   <addaction name="actEdit_Undo"/>
-   <addaction name="acEdit_Redo"/>
+   <addaction name="actLang_CN"/>
+   <addaction name="actLang_EN"/>
    <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
@@ -152,6 +155,9 @@
    </property>
   </action>
   <action name="actEdit_Cut">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>icons/images/cut.jpg</normaloff>icons/images/cut.jpg</iconset>
@@ -167,6 +173,9 @@
    </property>
   </action>
   <action name="actEdit_Copy">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>icons/images/copy.jpg</normaloff>icons/images/copy.jpg</iconset>
@@ -182,6 +191,9 @@
    </property>
   </action>
   <action name="actEdit_Paste">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>icons/images/paste.jpg</normaloff>icons/images/paste.jpg</iconset>
@@ -254,6 +266,9 @@
    </property>
   </action>
   <action name="actEdit_Undo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>icons/images/undo.jpg</normaloff>icons/images/undo.jpg</iconset>
@@ -269,6 +284,9 @@
    </property>
   </action>
   <action name="acEdit_Redo">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normaloff>icons/images/redo.jpg</normaloff>icons/images/redo.jpg</iconset>
@@ -304,6 +322,36 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actLang_CN">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/chinese.jpg</normaloff>icons/images/chinese.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>汉语</string>
+   </property>
+   <property name="toolTip">
+    <string>汉语界面</string>
+   </property>
+  </action>
+  <action name="actLang_EN">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/images/English.jpg</normaloff>icons/images/English.jpg</iconset>
+   </property>
+   <property name="text">
+    <string>英语</string>
+   </property>
+   <property name="toolTip">
+    <string>英语</string>
    </property>
   </action>
  </widget>
@@ -434,6 +482,38 @@
     <hint type="destinationlabel">
      <x>265</x>
      <y>200</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plainTextEdit</sender>
+   <signal>undoAvailable(bool)</signal>
+   <receiver>actEdit_Undo</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>345</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plainTextEdit</sender>
+   <signal>redoAvailable(bool)</signal>
+   <receiver>acEdit_Redo</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>345</x>
+     <y>200</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>-1</x>
+     <y>-1</y>
     </hint>
    </hints>
   </connection>
