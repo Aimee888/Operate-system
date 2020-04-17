@@ -1,0 +1,95 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'ui_TreeWidget.ui'
+#
+# Created by: PyQt5 UI code generator 5.13.0
+#
+# WARNING! All changes made in this file will be lost!
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(800, 600)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setObjectName("menubar")
+        self.menu = QtWidgets.QMenu(self.menubar)
+        self.menu.setObjectName("menu")
+        self.menu_2 = QtWidgets.QMenu(self.menubar)
+        self.menu_2.setObjectName("menu_2")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.toolBar = QtWidgets.QToolBar(MainWindow)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.toolBar.setFont(font)
+        self.toolBar.setToolButtonStyle(QtCore.Qt.ToolButtonTextUnderIcon)
+        self.toolBar.setObjectName("toolBar")
+        MainWindow.addToolBar(QtCore.Qt.TopToolBarArea, self.toolBar)
+        self.actTree_AddFolder = QtWidgets.QAction(MainWindow)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("image/icon/AddFolder.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actTree_AddFolder.setIcon(icon)
+        self.actTree_AddFolder.setObjectName("actTree_AddFolder")
+        self.actTree_AddFiles = QtWidgets.QAction(MainWindow)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("image/icon/AddFiles.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actTree_AddFiles.setIcon(icon1)
+        self.actTree_AddFiles.setObjectName("actTree_AddFiles")
+        self.actZoomIn = QtWidgets.QAction(MainWindow)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("image/icon/ZoomIn.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actZoomIn.setIcon(icon2)
+        self.actZoomIn.setObjectName("actZoomIn")
+        self.actZoomOut = QtWidgets.QAction(MainWindow)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("image/icon/ZoomOut.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actZoomOut.setIcon(icon3)
+        self.actZoomOut.setObjectName("actZoomOut")
+        self.actZoomRealSize = QtWidgets.QAction(MainWindow)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap("image/icon/ZoomRealSize.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.actZoomRealSize.setIcon(icon4)
+        self.actZoomRealSize.setObjectName("actZoomRealSize")
+        self.menubar.addAction(self.menu.menuAction())
+        self.menubar.addAction(self.menu_2.menuAction())
+        self.toolBar.addAction(self.actTree_AddFolder)
+        self.toolBar.addAction(self.actTree_AddFiles)
+        self.toolBar.addSeparator()
+        self.toolBar.addAction(self.actZoomIn)
+        self.toolBar.addAction(self.actZoomOut)
+        self.toolBar.addAction(self.actZoomRealSize)
+        self.toolBar.addSeparator()
+
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+    def retranslateUi(self, MainWindow):
+        _translate = QtCore.QCoreApplication.translate
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.menu.setTitle(_translate("MainWindow", "目录树"))
+        self.menu_2.setTitle(_translate("MainWindow", "视图"))
+        self.toolBar.setWindowTitle(_translate("MainWindow", "toolBar"))
+        self.actTree_AddFolder.setText(_translate("MainWindow", "添加目录..."))
+        self.actTree_AddFolder.setToolTip(_translate("MainWindow", "添加目录"))
+        self.actTree_AddFolder.setShortcut(_translate("MainWindow", "Ctrl+F"))
+        self.actTree_AddFiles.setText(_translate("MainWindow", "添加文件..."))
+        self.actTree_AddFiles.setToolTip(_translate("MainWindow", "添加文件"))
+        self.actTree_AddFiles.setShortcut(_translate("MainWindow", "Ctrl+N"))
+        self.actZoomIn.setText(_translate("MainWindow", "放大"))
+        self.actZoomIn.setToolTip(_translate("MainWindow", "放大图片"))
+        self.actZoomIn.setShortcut(_translate("MainWindow", "Ctrl+I"))
+        self.actZoomOut.setText(_translate("MainWindow", "缩小"))
+        self.actZoomOut.setToolTip(_translate("MainWindow", "缩小图片"))
+        self.actZoomOut.setShortcut(_translate("MainWindow", "Ctrl+O"))
+        self.actZoomRealSize.setText(_translate("MainWindow", "实际大小"))
+        self.actZoomRealSize.setToolTip(_translate("MainWindow", "图片实际大小显示"))
