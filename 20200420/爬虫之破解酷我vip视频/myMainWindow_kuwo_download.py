@@ -9,19 +9,11 @@
 ================================================="""
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTreeWidgetItem, QLineEdit
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTreeWidgetItem, QLineEdit, QFileDialog
 from enum import Enum
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from ui_kuwo import Ui_MainWindow
 import requests
-import os
-
-
-def create_folder(path):
-    if os.path.exists(path):
-        pass
-    else:
-        os.mkdir(path)
 
 
 # 节点类型的枚举类型
@@ -138,7 +130,7 @@ class QmyMainWindow(QMainWindow):
         self.ui.treeWidget.addTopLevelItem(item)
 
     # 获取歌曲，默认5页
-    def get_kuwo_songs(self, key, page=5):
+    def get_kuwo_songs(self, key, page=1):
         # 右键检查-->network-->在Name找到searchMusicBykeyWord?点开，在右侧可以看到请求头和url信息
         headers = {
             'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.87 Safari/537.36",
@@ -157,9 +149,7 @@ class QmyMainWindow(QMainWindow):
                 singer_name = dic_songs_info["artist"]
                 song_time = dic_songs_info["songTimeMinutes"]
                 singer_album = dic_songs_info["album"]
-                path_singer = "./酷我音乐/" + self.ui.lineEdit.text()
-                create_folder(path_singer)
-                self.show_songs_tree(order, song_name, singer_name, singer_album, song_time, song_rid)
+                self.show_songs_tree(order, song_name, singer_name, singer_album, song_time, song_rid)  # 显示到窗口
                 order = order + 1
 
     def start_thread(self, path_singer, song_url, song_name):
@@ -180,8 +170,8 @@ class QmyMainWindow(QMainWindow):
                 song_name = aItem.text(1)
                 song_rid = int(aItem.text(5))
                 song_url = self.get_one_song_url(song_rid)
-                path_singer = "./酷我音乐/" + self.ui.lineEdit.text()
-                self.start_thread(path_singer, song_url, song_name)
+                dirStr = QFileDialog.getExistingDirectory()  # 选择目录
+                self.start_thread(dirStr, song_url, song_name)
 
     # 获取一首歌的url
     def get_one_song_url(self, rid):
