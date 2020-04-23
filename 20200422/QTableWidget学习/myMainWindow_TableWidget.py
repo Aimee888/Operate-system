@@ -9,7 +9,7 @@
 ================================================="""
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem
+from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QTableWidgetItem,QAbstractItemView
 from PyQt5.QtCore import Qt, QDate, pyqtSlot
 from PyQt5.QtGui import QFont, QBrush, QIcon
 from enum import Enum
@@ -42,11 +42,11 @@ class QmyMainWindow(QMainWindow):
 
         # 添加状态栏和控件
         self.LabCellIndex = QLabel("当前单元格坐标：", self)
-        self.LabCellIndex.setMinimumWidth(335)
+        self.LabCellIndex.setMinimumWidth(270)
         self.LabCellType = QLabel("当前单元格类型：", self)
-        self.LabCellType.setMinimumWidth(250)
+        self.LabCellType.setMinimumWidth(200)
         self.LabStudID = QLabel("学生ID：", self)
-        self.LabStudID.setMinimumWidth(200)
+        self.LabStudID.setMinimumWidth(150)
         self.ui.statusbar.addWidget(self.LabCellIndex)
         self.ui.statusbar.addWidget(self.LabCellType)
         self.ui.statusbar.addWidget(self.LabStudID)
@@ -75,6 +75,18 @@ class QmyMainWindow(QMainWindow):
         self.ui.btnAutoHeight.clicked.connect(self.do_btn_auto_height_clicked)
         # 自动调整列宽
         self.ui.btnAutoWidth.clicked.connect(self.do_btn_auto_width_clicked)
+        # 表格可编辑
+        self.ui.chkBoxEditable.clicked.connect(self.do_chkbox_editable_clicked)
+        # 是否显示行表头
+        self.ui.chkBoxHeaderH.clicked.connect(self.do_chkbox_headerh_clicked)
+        # 是否显示列表头
+        self.ui.chkBoxHeaderV.clicked.connect(self.do_chkbox_headerv_clicked)
+        # 选择模式：行选择
+        self.ui.radioSelectRow.clicked.connect(self.do_radio_selectrow_clicked)
+        # 选择模式：单元格选择
+        self.ui.radioSelectItem.clicked.connect(self.do_radio_selectitem_clicked)
+        # 读取表格到文本
+        self.ui.btnReadToText.clicked.connect(self.do_btn_read_to_text_clicked)
 
     # 设置表头
     def do_btn_set_header_clicked(self):
@@ -212,6 +224,52 @@ class QmyMainWindow(QMainWindow):
     # 自动调整列宽
     def do_btn_auto_width_clicked(self):
         self.ui.tableWidget.resizeColumnsToContents()
+
+    # 表格可编辑
+    @pyqtSlot(bool)
+    def do_chkbox_editable_clicked(self, checked):
+        if checked:
+            trig = QAbstractItemView.DoubleClicked | QAbstractItemView.SelectedClicked
+        else:
+            trig = QAbstractItemView.NoEditTriggers  # 不允许编辑
+        self.ui.tableWidget.setEditTriggers(trig)
+
+    # 是否显示行表头
+    @pyqtSlot(bool)
+    def do_chkbox_headerh_clicked(self, checked):
+        self.ui.tableWidget.horizontalHeader().setVisible(checked)
+
+    # 是否显示列表头
+    @pyqtSlot(bool)
+    def do_chkbox_headerv_clicked(self, checked):
+        self.ui.tableWidget.verticalHeader().setVisible(checked)
+
+    # 选择模式：行选择
+    def do_radio_selectrow_clicked(self):
+        selMode = QAbstractItemView.SelectRows
+        self.ui.tableWidget.setSelectionBehavior(selMode)
+
+    # 选择模式：单元格选择
+    def do_radio_selectitem_clicked(self):
+        selMode = QAbstractItemView.SelectItems
+        self.ui.tableWidget.setSelectionBehavior(selMode)
+
+    # 读取表格到文本
+    def do_btn_read_to_text_clicked(self):
+        self.ui.plainTextEdit.clear()
+        rowCount = self.ui.tableWidget.rowCount()  # 行数
+        colCount = self.ui.tableWidget.columnCount()  # 列数
+        for i in range(rowCount):
+            strText = "第 %d 行：" % (i+1)
+            for j in range(colCount - 1):
+                cellItem = self.ui.tableWidget.item(i, j)
+                strText = strText + cellItem.text() + "  "
+            cellItem = self.ui.tableWidget.item(i, colCount - 1)  # 最后一列
+            if cellItem.checkState() == Qt.Checked:
+                strText = strText + "党员"
+            else:
+                strText = strText + "群众"
+            self.ui.plainTextEdit.appendPlainText(strText)
 
 
 if __name__ == "__main__":
