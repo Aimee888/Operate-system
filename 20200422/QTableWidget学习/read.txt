@@ -1,2 +1,10 @@
-1. 关于splitter的比例问题
-
+https://www.cnblogs.com/smart-zihan/p/12762866.html
+1. 关于splitter的比例问题。
+    比方说UI的右边是一个splitter，分为上下两个部分，上面是tableWidget，下面是PlainTextEdit
+    那么这两个控件的比例设置需要到相关的属性设置页Property Editor里面设置。
+    在Property栏里面找到sizePolicy，下方有Horizontal Policy，Vertical Policy，Horizontal Stretch，Vertical Stretch
+    我们调整Vertical Stretch这个属性，TableWidget里面设置6，PlainTextEdit里面设置4，
+    这样它们的高度比例就是6:4
+2. 关于间隔行颜色的问题。
+    选中QTableWidget这个控件，在右侧属性页找到styleSheet这个属性，然后点击右侧那三个点，
+    color选择alternate-background-color，颜色随便选择一个自己想要的颜色即可。

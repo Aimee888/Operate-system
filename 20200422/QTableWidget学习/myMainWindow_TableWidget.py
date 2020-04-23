@@ -51,7 +51,7 @@ class QmyMainWindow(QMainWindow):
         self.ui.statusbar.addWidget(self.LabCellType)
         self.ui.statusbar.addWidget(self.LabStudID)
 
-        self.ui.tableWidget.setAlternatingRowColors(True)  # 交替行颜色
+        # self.ui.tableWidget.setAlternatingRowColors(True)  # 交替行颜色
         self.__tableInitialized = False  # 表格数据未初始化
 
         # ===================================================信号与槽连接
@@ -87,6 +87,8 @@ class QmyMainWindow(QMainWindow):
         self.ui.radioSelectItem.clicked.connect(self.do_radio_selectitem_clicked)
         # 读取表格到文本
         self.ui.btnReadToText.clicked.connect(self.do_btn_read_to_text_clicked)
+        # 是否隔行变色
+        self.ui.chkBoxRowColor.clicked.connect(self.do_chkbox_rowcolor_clicked)
 
     # 设置表头
     def do_btn_set_header_clicked(self):
@@ -270,6 +272,11 @@ class QmyMainWindow(QMainWindow):
             else:
                 strText = strText + "群众"
             self.ui.plainTextEdit.appendPlainText(strText)
+
+    # 是否隔行变色
+    @pyqtSlot(bool)
+    def do_chkbox_rowcolor_clicked(self, checked):
+        self.ui.tableWidget.setAlternatingRowColors(checked)
 
 
 if __name__ == "__main__":
